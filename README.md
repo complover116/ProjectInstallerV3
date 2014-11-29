@@ -1,4 +1,4 @@
 ProjectInstallerV3
 ==================
 
-Yet another attempt at creating a unified launcher for my projects
+This branch contains PI's repository - it stores information about versions and builds
