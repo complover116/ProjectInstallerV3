@@ -2,7 +2,7 @@
 {
 "name":"QAR-1",
 "version":"v1.5",
-"getmethod":"repofile",
-"location":"QAR-1/QAR-1.jar"
+"getmethod":"dl",
+"location":"https://www.dropbox.com/s/llj6ypzs1akhmj0/QAR-1.jar?dl=1"
 }
 ]
