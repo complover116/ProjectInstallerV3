@@ -46,8 +46,8 @@ public class InstallThread implements Runnable {
 				try {
 					Files.copy(Paths.get(result.getAbsolutePath()), Paths.get(Repository.workingfolder+(String) project.get("name")+"/Exec.jar"), REPLACE_EXISTING);
 					Repository.setVersion((String) project.get("name"), (String) project.get("version"));
+					result.delete();
 					SwingUtilities.invokeLater(new Runnable(){
-
 						@Override
 						public void run() {
 							GUI.topBar.setMaximum(100);

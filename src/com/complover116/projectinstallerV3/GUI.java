@@ -100,13 +100,23 @@ public class GUI {
 						GUI.topBar.setIndeterminate(true);
 						GUI.topBar.setString("Launching "+da2+"...");
 						try {
-							Runtime.getRuntime().exec(" java -jar "+new File(Repository.workingfolder+da2+"/Exec.jar").getAbsolutePath());
-							Thread.sleep(1000);
-							System.exit(0);
+							Process proc = Runtime.getRuntime().exec(" java -jar "+new File(Repository.workingfolder+da2+"/Exec.jar").getAbsolutePath());
+							//Thread.sleep(1000);
+							GUI.topBar.setString(da2+" is running...");
+							launcherPanel.removeAll();
+							JButton kill = new JButton("Kill "+da2);
+							kill.addActionListener(new ParamAL(proc){
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									proc.destroyForcibly();
+								}
+								
+							});
+							launcherPanel.add(kill);
+							frame.pack();
+							frame.repaint();
+							new Thread(new RunGameThread(proc), "RunGame Thread").start();
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (InterruptedException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
